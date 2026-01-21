@@ -32,7 +32,7 @@ bottom = st.container()
 @st.cache_data
 def load_data():
     gdf = load_gminy("data/poland.municipalities.json")
-    df = load_Wynagrodzenia("data/mediana_wynagrodzenie.xlsx")
+    df = load_Wynagrodzenia("data/Wynagrodzenia.xlsx")
 
     gdf = gdf.merge(
         df[["Kod", "Mediana"]],
