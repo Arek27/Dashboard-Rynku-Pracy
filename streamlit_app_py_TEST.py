@@ -47,7 +47,7 @@ gdf = load_data()
 
 with map_section:
     st.subheader("Mediana wynagrodzenia wg gminy")
-    mapa_mediana(gdf, "Mediana")
+    mapa_mediana(gdf, "mediana")
 
 with top:
     col1, col2, col3 = st.columns(3)
