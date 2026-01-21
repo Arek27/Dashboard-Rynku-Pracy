@@ -37,7 +37,7 @@ def load_data():
     gdf = gdf.merge(
         df[["Kod", "Mediana"]],
         left_on="terc",
-        right_on="kod",
+        right_on="Kod",
         how="left"
     )
 
@@ -47,7 +47,7 @@ gdf = load_data()
 
 with map_section:
     st.subheader("Mediana wynagrodzenia wg gminy")
-    mapa_mediana(gdf, "mediana")
+    mapa_mediana(gdf, "Mediana")
 
 with top:
     col1, col2, col3 = st.columns(3)
