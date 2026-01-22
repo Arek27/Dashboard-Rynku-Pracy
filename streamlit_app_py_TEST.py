@@ -34,6 +34,11 @@ def load_data():
         right_on="Kod",
         how="left"
     )
+    
+    med = gdf["Mediana"]
+    gdf["Mediana_norm"] = (                                            #normalizacja mediany w celu pokazania różnic między gminami przy użycie mapy stworzonej przy pomocy biblioteki PyDeck
+        (med - med.min()) / (med.max() - med.min()) * 255
+    ).fillna(0)
 
     return gdf
 
