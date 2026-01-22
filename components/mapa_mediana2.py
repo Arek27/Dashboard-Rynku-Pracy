@@ -6,23 +6,15 @@ def mediana_gminy(gdf, value_column: str):
     geojson = gdf.__geo_interface__
 
     layer = pdk.Layer(
-    "GeoJsonLayer",
-    geojson,
-    pickable=True,
-    stroked=True,
-    filled=True,
-    get_fill_color="""
-        [
-            255 - Mediana_norm,
-            80,
-            Mediana_norm,
-            180
-        ]
-    """,
-    get_line_color=[90, 90, 90],
-    line_width_min_pixels=0.4,
-)
-
+        "GeoJsonLayer",
+        geojson,
+        pickable=True,
+        stroked=True,
+        filled=True,
+        get_fill_color="properties.fill_color",
+        get_line_color=[120, 120, 120],
+        line_width_min_pixels=0.4,
+    )
 
     view_state = pdk.ViewState(
         longitude=19.0,
@@ -32,12 +24,13 @@ def mediana_gminy(gdf, value_column: str):
         max_zoom=8.0,
     )
 
-    deck = pdk.Deck(
-        layers=[layer],
-        initial_view_state=view_state,
-        tooltip={
-            "text": "{name}\nMediana: {Mediana}"
-        },
+    st.pydeck_chart(
+        pdk.Deck(
+            layers=[layer],
+            initial_view_state=view_state,
+            tooltip={
+                "text": "{name}\nMediana: {Mediana}"
+            },
+        ),
+        use_container_width=True,
     )
-
-    st.pydeck_chart(deck, use_container_width=True)
