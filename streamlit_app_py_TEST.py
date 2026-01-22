@@ -32,7 +32,7 @@ def load_data():
     df = load_Wynagrodzenia("data/Wynagrodzenia.xlsx")
 
     gdf = gdf.merge(
-        df[["Kod", "Mediana"]],
+        df[["Kod", "Mediana", "Średnia"]],
         left_on="terc",
         right_on="Kod",
         how="left"
@@ -54,16 +54,35 @@ def load_data():
     return gdf
 
 gdf = load_data()
+gdf["selected"] = gdf["name"] == selected_name
 
 with map_section:
     st.subheader("Mediana wynagrodzenia wg gminy")
     mediana_gminy(gdf, "Mediana")
 
 with top:
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Placeholder", "—")
-    col2.metric("Placeholder", "—")
-    col3.metric("Placeholder", "—")
+    selected_name = st.selectbox(
+        "Wybierz gminę",
+        options=sorted(gdf["name"].dropna().unique())
+    )
+
+selected_row = gdf[gdf["name"] == selected_name].iloc[0]
 
 with bottom:
-    st.subheader("Additional visualisations")
+    col1, col2, col3 = st.columns(3)
+
+col1.metric(
+    "Mediana wynagrodzenia",
+    f"{selected_row['Mediana']:.0f} PLN"
+)
+
+col2.metric(
+    "Średnie wynagrodzenie",
+    f"{selected_row['Średnia']:.0f} PLN"
+)
+
+col3.metric(
+    "Różnica (Średnia − Mediana)",
+    f"{(selected_row['Średnia'] - selected_row['Mediana']):.0f} PLN"
+)
+
