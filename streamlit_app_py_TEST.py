@@ -42,6 +42,9 @@ def get_WMP():
 
 df_vars = get_WMP()
 
+var_wolne = df_vars[df_vars["n1"] == "wolne miejsca pracy"].iloc[0]
+var_id = var_wolne["id"]
+
 def get_yearly_data(var_id, years):
     url = f"https://bdl.stat.gov.pl/api/v1/data/by-variable/{var_id}"
     params = {
