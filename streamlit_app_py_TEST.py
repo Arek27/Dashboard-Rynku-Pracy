@@ -11,7 +11,7 @@ def get_data():
 
 from loaders.geo import load_gminy
 from loaders.wynagrodzenia import load_Wynagrodzenia
-from components.mapa_mediana import mediana_gminy
+from components.mapa_mediana2 import mediana_gminy
 
 st.set_page_config(
     page_title="Dashboard rynku pracy w Polsce",
