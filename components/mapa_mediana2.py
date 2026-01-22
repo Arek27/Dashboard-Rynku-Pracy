@@ -6,22 +6,23 @@ def mediana_gminy(gdf, value_column: str):
     geojson = gdf.__geo_interface__
 
     layer = pdk.Layer(
-        "GeoJsonLayer",
-        geojson,
-        pickable=True,
-        stroked=True,
-        filled=True,
-        get_fill_color=f"""
-            [
-                255,
-                255 - ({value_column} / 50),
-                120,
-                180
-            ]
-        """,
-        get_line_color=[90, 90, 90],
-        line_width_min_pixels=0.4,
-    )
+    "GeoJsonLayer",
+    geojson,
+    pickable=True,
+    stroked=True,
+    filled=True,
+    get_fill_color="""
+        [
+            255 - Mediana_norm,
+            80,
+            Mediana_norm,
+            180
+        ]
+    """,
+    get_line_color=[90, 90, 90],
+    line_width_min_pixels=0.4,
+)
+
 
     view_state = pdk.ViewState(
         longitude=19.0,
