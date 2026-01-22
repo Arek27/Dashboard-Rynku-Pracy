@@ -54,11 +54,7 @@ def load_data():
     return gdf
 
 gdf = load_data()
-gdf["selected"] = gdf["name"] == selected_name
 
-with map_section:
-    st.subheader("Mediana wynagrodzenia wg gminy")
-    mediana_gminy(gdf, "Mediana")
 
 with top:
     selected_name = st.selectbox(
@@ -68,6 +64,10 @@ with top:
 
 selected_row = gdf[gdf["name"] == selected_name].iloc[0]
 
+gdf["selected"] = gdf["name"] == selected_name
+with map_section:
+    st.subheader("Mediana wynagrodzenia wg gminy")
+    mediana_gminy(gdf, "Mediana")
 with bottom:
     col1, col2, col3 = st.columns(3)
 
