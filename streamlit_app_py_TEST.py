@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.cm as cm
 import matplotlib.colors as colors
+import streamlit as st
 
 
 @st.cache_data
