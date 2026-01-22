@@ -35,11 +35,19 @@ def load_data():
         how="left"
     )
     
-    med = gdf["Mediana"]
-    gdf["Mediana_norm"] = (                                            #normalizacja mediany w celu pokazania różnic między gminami przy użycie mapy stworzonej przy pomocy biblioteki PyDeck
-        (med - med.min()) / (med.max() - med.min()) * 255
-    ).fillna(0)
+    vmin = gdf["Mediana"].min()
+    vmax = gdf["Mediana"].max()
 
+    norm = colors.Normalize(vmin=vmin, vmax=vmax)
+    cmap = cm.get_cmap("YlGnBu")
+
+    def colorize(value):
+        if np.isnan(value):
+            return [211, 211, 211, 200]  # lightgray like Folium
+        r, g, b, _ = cmap(norm(value))
+        return [int(r*255), int(g*255), int(b*255), 200]
+
+    gdf["fill_color"] = gdf["Mediana"].apply(colorize)
     return gdf
 
 gdf = load_data()
