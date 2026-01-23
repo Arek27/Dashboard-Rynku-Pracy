@@ -1,3 +1,3 @@
 @echo off
-python start.py
+start "" /b python start.py
 pause
