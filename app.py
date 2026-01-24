@@ -15,7 +15,7 @@ st.set_page_config(                                                             
     layout="wide"                                                                  #Ustawienie szerokiego układu strony
 )
 
-st.title("Dashbo")                                                 # ustawienie głównego tytułu aplikacji w interfejsie użytkownika Streamlit.
+st.title("Dashboard: Rynek Pracy")                                                 # ustawienie głównego tytułu aplikacji w interfejsie użytkownika Streamlit.
 
 HEADERS = {"X-ClientId": "9d4c3601-0cfe-46c6-549f-08de2b04124b"}                   #klucz do API BDL
 
