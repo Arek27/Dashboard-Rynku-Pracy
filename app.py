@@ -11,11 +11,11 @@ from loaders.wynagrodzenia import load_Wynagrodzenia                            
 from components.mapa_mediana2 import mediana_gminy                                 #import funkcji odpowiedzialnej za wyświetlanie mapy mediany wynagrodzeń w Polskich gminach
 
 st.set_page_config(                                                                #konfiguruje podstawowe parametry strony aplikacji Streamlit.
-    page_title="Dashboard",                                           #ustawienie tytułu strony wyświetlanego w karcie przeglądarki
+    page_title="Dashboard: Rynek Pracy",                                           #ustawienie tytułu strony wyświetlanego w karcie przeglądarki
     layout="wide"                                                                  #Ustawienie szerokiego układu strony
 )
 
-st.title("Dashboard: Rynek Pracy")                                                 # ustawienie głównego tytułu aplikacji w interfejsie użytkownika Streamlit.
+st.title("Dashbo")                                                 # ustawienie głównego tytułu aplikacji w interfejsie użytkownika Streamlit.
 
 HEADERS = {"X-ClientId": "9d4c3601-0cfe-46c6-549f-08de2b04124b"}                   #klucz do API BDL
 
