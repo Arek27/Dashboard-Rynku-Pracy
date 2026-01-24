@@ -150,7 +150,7 @@ chmod +x run.sh
 
 Aplikacja otworzy się automatycznie w domyślnej przeglądarce.
 
----
+
 
 ### Windows
 
