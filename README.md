@@ -132,7 +132,13 @@ Dodatkowo wymagane:
 
 ## Instalacja i uruchomienie
 
+Poniższe polecenia należy wykonać w terminalu systemowym:
+
+---
+
 ### macOS / Linux
+
+Otwórz **Terminal** i wpisz kolejno:
 
 ```bash
 git clone https://github.com/Arek27/Dashboard-Rynku-Pracy.git
@@ -142,7 +148,13 @@ chmod +x run.sh
 ./run.sh
 ```
 
+Aplikacja otworzy się automatycznie w domyślnej przeglądarce.
+
+---
+
 ### Windows
+
+Otwórz **PowerShell** lub **Wiersz polecenia (CMD)** i wpisz:
 
 ```powershell
 git clone https://github.com/Arek27/Dashboard-Rynku-Pracy.git
@@ -151,11 +163,13 @@ pip install -r requirements.txt
 .\run_app.bat
 ```
 
-Alternatywnie:
+Alternatywnie możesz uruchomić aplikację poleceniem:
 
 ```powershell
 python start.py
 ```
+
+Po chwili aplikacja zostanie otwarta automatycznie w przeglądarce.
 
 ---
 
