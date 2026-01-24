@@ -86,7 +86,7 @@ def get_WMP():                                                                  
 
     df_final = pd.DataFrame(values)
     df_final["rok"] = df_final["year"].astype(int)                                             #Tworzy nową kolumnę „rok” poprzez konwersję pola tekstowego year na typ liczbowy
-    df_final["wartość"] = df_final["val"]                                                      #Tworzy kolumnę „wartość”, która zawiera faktyczną liczbę wolnych miejsc pracy
+    df_final["wartość"] = df_final["val"].astype(float)                                        #Tworzy kolumnę „wartość”, która zawiera faktyczną liczbę wolnych miejsc pracy
     return df_final[["rok", "wartość"]].sort_values("rok")                                     #sortuje dane rosnąco według roku i zwraca gotowy zbiór danych do dalszej analizy
 
 
