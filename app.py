@@ -111,13 +111,18 @@ def get_wsk_zatrudnienia():                                                     
     return df.sort_values(["rok", "kwartał"]).reset_index(drop=True)                            #Sortuje dane najpierw według roku, a następnie według kwartału i zwracagotowy do dlaszej analizy zbiór danych
                #koniec części kodu utworzonego przy użyciu AI"
 
-def show_metric(col, df, label, jednostka=""):                                                   #Definicja funkcji pomocniczej odpowiedzialnej za wyświetlanie najnowszej zmiany wskaźników w aplikacji streamlit
-    val = df["wartość"].iloc[-1]                                                                 #Pobiera ostatnią wartość wskaźnika z kolumny „wartość”
-    prev = df["wartość"].iloc[-2]                                                                #Pobiera wartość zmiennej z poprzedniego okresu
-    delta = round(val - prev, 2)                                                                 #Oblicza indeks łańcuchowy i zaokrągla liczbę do dwóchmiejsc po przecinku
-    delta_color = "inverse" if delta < 0 else "normal"                                           #Ustala sposób wizualizacji zmiany wartości: "inverse" – gdy zmiana jest ujemna (np. spadek bezrobocia), "normal" – gdy zmiana jest dodatnia lub zerowa.
-    col.metric(label, f"{val} {jednostka}", f"{delta:+} {jednostka}", delta_color=delta_color)   #Wyświetla metrykę KPI w interfejsie użytkownika: label – opis metryki, druga wartość – aktualna wartość wskaźnika wraz z jednostką, trzecia wartość – zmiana względem poprzedniego okresu, delta_color – sposób kolorowania zmiany.
+def show_metric(col, df, label, jednostka="", reverse_colors=False):                            #Definicja funkcji pomocniczej odpowiedzialnej za wyświetlanie najnowszej zmiany wskaźników w aplikacji streamlit
+    val = df["wartość"].iloc[-1]                                                                #Pobiera ostatnią wartość wskaźnika z kolumny „wartość”
+    prev = df["wartość"].iloc[-2]                                                               #Pobiera wartość zmiennej z poprzedniego okresu
+    delta = round(val - prev, 2)                                                                #Oblicza indeks łańcuchowy i zaokrągla liczbę do dwóch miejsc po przecinku
 
+    # Jeśli reverse_colors = True, zmiana dodatnia jest zła (np. bezrobocie)
+    if reverse_colors:
+        delta_color = "inverse" if delta > 0 else "normal"
+    else:
+        delta_color = "normal" if delta > 0 else "inverse"
+
+    col.metric(label, f"{val} {jednostka}", f"{delta:+} {jednostka}", delta_color=delta_color)   #Wyświetla metrykę KPI w interfejsie użytkownika: label – opis metryki, druga wartość – aktualna wartość wskaźnika wraz z jednostką, trzecia wartość – zmiana względem poprzedniego okresu, delta_color – sposób kolorowania zmiany.
 
 # === Wskaźniki ===
 
@@ -129,10 +134,10 @@ bezrobotni = get_bezrobotni()
 WMP = get_WMP()
 wsk_zatrudnienia = get_wsk_zatrudnienia()
 
-show_metric(col1, stopa_bezrobocia, "Stopa bezrobocia", "%")                            #Wyświetla w pierwszej kolumnie wskaźnik prezentujujący aktualną stopę bezrobocia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
-show_metric(col2, bezrobotni, "Bezrobotni (ogółem)", "os.")                             #Wyświetla w drugiej kolumnie wskaźnik prezentujujący aktualną liczbę bezrobotnych wraz ze zmianą względem poprzedniego okresu, wyrażoną w liczbie osób.
-show_metric(col3, WMP, "Wolne miejsca pracy", "tys.")                                   #Wyświetla w trzeciej kolumnie wskaźnik prezentujujący liczbę wolnych miejsc pracy wraz ze zmianą względem poprzedniego okresu, tysiącach.
-show_metric(col4, wsk_zatrudnienia, "Wskaźnik zatrudnienia", "%")                       #Wyświetla w czwartej kolumnie wskaźnik prezentujujący aktualny wskaźnik zatrudnienia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
+show_metric(col1, stopa_bezrobocia, "Stopa bezrobocia", "%", reverse_colors=True)           #Wyświetla w pierwszej kolumnie wskaźnik prezentujujący aktualną stopę bezrobocia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
+show_metric(col2, bezrobotni, "Bezrobotni (ogółem)", "os.", reverse_colors=True)            #Wyświetla w drugiej kolumnie wskaźnik prezentujujący aktualną liczbę bezrobotnych wraz ze zmianą względem poprzedniego okresu, wyrażoną w liczbie osób.
+show_metric(col3, WMP, "Wolne miejsca pracy", "tys.", reverse_colors=False)                 #Wyświetla w trzeciej kolumnie wskaźnik prezentujujący liczbę wolnych miejsc pracy wraz ze zmianą względem poprzedniego okresu, tysiącach.
+show_metric(col4, wsk_zatrudnienia, "Wskaźnik zatrudnienia", "%", reverse_colors=False)     #Wyświetla w czwartej kolumnie wskaźnik prezentujujący aktualny wskaźnik zatrudnienia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
 
 # === Wykresy Trendu ===
 
