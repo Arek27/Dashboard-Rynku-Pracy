@@ -22,44 +22,92 @@ Aplikacja webowa stworzona w **Streamlit**, prezentująca dane z rynku pracy w P
 
 ## Wymagania
 
-- Python 3.8+
-- Streamlit
-- Pandas
-- NumPy
-- Matplotlib
-- Requests
-- Pliki danych:
-  - `data/Wynagrodzenia.xlsx`
-  - `data/poland.municipalities.json`
+- Python 3.9+
+- pip
+- Przeglądarka internetowa (np. Chrome, Safari, Firefox)
 
-## Uruchomienie aplikacji
+### macOS / Linux
 
-1. Zainstaluj wymagane biblioteki:
+Dodatkowo wymagane:
+- git (najczęściej preinstalowany w macOS)
+- Terminal
+
+### Windows
+
+Dodatkowo wymagane:
+- Git (np. z [git-scm.com](https://git-scm.com/))
+- PowerShell lub CMD
+- (Opcjonalnie) Wirtualne środowisko: `venv` lub `conda`
+
+---
+
+## Instalacja i uruchomienie
+
+### macOS / Linux
+
+Uruchom w terminalu:
 
 ```bash
+git clone https://github.com/Arek27/Dashboard-Rynku-Pracy.git
+cd Dashboard-Rynku-Pracy
+pip install -r requirements.txt
+chmod +x run.sh
+./run.sh
+```
+
+Aplikacja otworzy się automatycznie w domyślnej przeglądarce.
+
+---
+
+### Windows
+
+1. Sklonuj repozytorium lub pobierz ZIP:
+
+```powershell
+git clone https://github.com/Arek27/Dashboard-Rynku-Pracy.git
+cd Dashboard-Rynku-Pracy
+```
+
+2. Zainstaluj wymagane pakiety:
+
+```powershell
 pip install -r requirements.txt
 ```
 
-2. Upewnij się, że pliki danych znajdują się w katalogu `data/`.
+3. Uruchom aplikację:
 
-3. Uruchom aplikację Streamlit:
-
-```bash
-streamlit run app.py
+```powershell
+.\run_app.bat
 ```
+
+Aplikacja otworzy się automatycznie w przeglądarce.
+
+Alternatywnie możesz użyć:
+
+```powershell
+python start.py
+```
+
+---
 
 ## Struktura projektu
 
 ```
 .
 ├── app.py                       # Główna aplikacja Streamlit
+├── start.py                     # Alternatywny sposób uruchomienia aplikacji
+├── run.sh                       # Skrypt uruchamiający dla macOS/Linux
+├── run_app.bat                  # Skrypt uruchamiający dla Windows
+├── requirements.txt             # Lista zależności Pythona
+├── .streamlit/
+│   └── config.toml              # Konfiguracja aplikacji Streamlit
 ├── components/
-│   └── mapa_mediana2.py        # Komponent do rysowania mapy wynagrodzeń
+│   └── mapa_mediana2.py         # Komponent do rysowania mapy wynagrodzeń
 ├── loaders/
-│   ├── geo.py                  # Loader danych geograficznych (GeoJSON)
-│   └── wynagrodzenia.py        # Loader danych o wynagrodzeniach
+│   ├── geo.py                   # Loader danych geograficznych (GeoJSON)
+│   └── wynagrodzenia.py         # Loader danych o wynagrodzeniach
 ├── data/
-│   ├── Wynagrodzenia.xlsx      # Dane o wynagrodzeniach (lokalne)
+│   ├── Wynagrodzenia.xlsx       # Dane o wynagrodzeniach (lokalne)
 │   └── poland.municipalities.json  # Granice gmin (GeoJSON)
 └── README.md
 ```
@@ -68,7 +116,9 @@ streamlit run app.py
 
 - Do korzystania z BDL API wymagany jest nagłówek `X-ClientId`. W kodzie znajduje się przykładowy identyfikator.
 - Dane z BDL są cache’owane przez mechanizm `@st.cache_data`, aby uniknąć nadmiernych zapytań do API.
+- Pliki z danymi muszą znajdować się w katalogu `data/`.
 
 ## Licencja
 
 Projekt udostępniony na licencji MIT.
+
