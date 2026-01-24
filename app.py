@@ -134,6 +134,11 @@ bezrobotni = get_bezrobotni()
 WMP = get_WMP()
 wsk_zatrudnienia = get_wsk_zatrudnienia()
 
+miesiace = {
+    "styczeń": 1, "luty": 2, "marzec": 3, "kwiecień": 4, "maj": 5, "czerwiec": 6,
+    "lipiec": 7, "sierpień": 8, "wrzesień": 9, "październik": 10, "listopad": 11, "grudzień": 12
+}
+
 show_metric(col1, stopa_bezrobocia, "Stopa bezrobocia", "%", reverse_colors=False)           #Wyświetla w pierwszej kolumnie wskaźnik prezentujujący aktualną stopę bezrobocia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
 show_metric(col2, bezrobotni, "Bezrobotni (ogółem)", "os.", reverse_colors=True)            #Wyświetla w drugiej kolumnie wskaźnik prezentujujący aktualną liczbę bezrobotnych wraz ze zmianą względem poprzedniego okresu, wyrażoną w liczbie osób.
 show_metric(col3, WMP, "Wolne miejsca pracy", "tys.", reverse_colors=True)                 #Wyświetla w trzeciej kolumnie wskaźnik prezentujujący liczbę wolnych miejsc pracy wraz ze zmianą względem poprzedniego okresu, tysiącach.
@@ -148,14 +153,16 @@ chart_col1, chart_col2 = st.columns(2)                                          
 with chart_col1:                                                                       #Stworzenie wykresu zmian w czasie watrości stopy bezrobocia, przy użyciu wcześniej zdefiniowanych funkcji
     st.markdown("#### Stopa bezrobocia")
     df = stopa_bezrobocia.copy()
-    df["czas"] = df["rok"].astype(str) + "-" + df["miesiąc"].astype(str)               #Tworzy nową kolumnę „czas”, łącząc rok i miesiąc w jeden tekstowy znacznik
-    st.line_chart(df.set_index("czas")["wartość"])                                     #Wyświetla wykres liniowy przedstawiający zmiany stopy bezrobocia w czasie
+    df["miesiąc_num"] = df["miesiąc"].map(miesiace)
+    df["czas"] = pd.to_datetime(dict(year=df["rok"], month=df["miesiąc_num"], day=1))
+    st.line_chart(df.set_index("czas")["wartość"])
 
 with chart_col2:
     st.markdown("#### Bezrobotni zarejestrowani")
     df = bezrobotni.copy()
-    df["czas"] = df["rok"].astype(str) + "-" + df["miesiąc"].astype(str)                #Tworzy nową kolumnę „czas”, łącząc rok i miesiąc w jeden tekstowy znacznik
-    st.line_chart(df.set_index("czas")["wartość"])                                      #Wyświetla wykres liniowy przedstawiający zmianę wartości liczby bezrobotnych w czasie.
+    df["miesiąc_num"] = df["miesiąc"].map(miesiace)
+    df["czas"] = pd.to_datetime(dict(year=df["rok"], month=df["miesiąc_num"], day=1))
+    st.line_chart(df.set_index("czas")["wartość"])
 
 chart_col3, chart_col4 = st.columns(2)                                                  #Tworzy dwie kolumny o równej szerokości, które umożliwiają równoległe wyświetlenie dwóch wykresów w jednym wierszu.
 
