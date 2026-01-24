@@ -163,11 +163,11 @@ pip install -r requirements.txt
 .\run_app.bat
 ```
 
-Alternatywnie możesz uruchomić aplikację poleceniem:
+Alternatywnie możesz uruchomić aplikację bez potrzeby pobierania plików czy instalowania bibliotek:
 
-```powershell
-python start.py
-```
+👉 [Kliknij tutaj, aby uruchomić aplikację online](https://dashboard-rynku-pracy-kjx7anadq5smckaza3v5wm.streamlit.app)
+
+---
 
 Po chwili aplikacja zostanie otwarta automatycznie w przeglądarce.
 
