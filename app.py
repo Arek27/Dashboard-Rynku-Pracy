@@ -134,9 +134,9 @@ bezrobotni = get_bezrobotni()
 WMP = get_WMP()
 wsk_zatrudnienia = get_wsk_zatrudnienia()
 
-show_metric(col1, stopa_bezrobocia, "Stopa bezrobocia", "%", reverse_colors=True)           #Wyświetla w pierwszej kolumnie wskaźnik prezentujujący aktualną stopę bezrobocia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
+show_metric(col1, stopa_bezrobocia, "Stopa bezrobocia", "%", reverse_colors=False)           #Wyświetla w pierwszej kolumnie wskaźnik prezentujujący aktualną stopę bezrobocia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
 show_metric(col2, bezrobotni, "Bezrobotni (ogółem)", "os.", reverse_colors=True)            #Wyświetla w drugiej kolumnie wskaźnik prezentujujący aktualną liczbę bezrobotnych wraz ze zmianą względem poprzedniego okresu, wyrażoną w liczbie osób.
-show_metric(col3, WMP, "Wolne miejsca pracy", "tys.", reverse_colors=False)                 #Wyświetla w trzeciej kolumnie wskaźnik prezentujujący liczbę wolnych miejsc pracy wraz ze zmianą względem poprzedniego okresu, tysiącach.
+show_metric(col3, WMP, "Wolne miejsca pracy", "tys.", reverse_colors=True)                 #Wyświetla w trzeciej kolumnie wskaźnik prezentujujący liczbę wolnych miejsc pracy wraz ze zmianą względem poprzedniego okresu, tysiącach.
 show_metric(col4, wsk_zatrudnienia, "Wskaźnik zatrudnienia", "%", reverse_colors=False)     #Wyświetla w czwartej kolumnie wskaźnik prezentujujący aktualny wskaźnik zatrudnienia wraz ze zmianą względem poprzedniego okresu, wyrażoną w procentach.
 
 # === Wykresy Trendu ===
