@@ -1,7 +1,6 @@
 # Dashboard: Rynek Pracy
 
-Aplikacja webowa stworzona w **Streamlit**, prezentująca dane z rynku pracy w Polsce. Źródłem danych jest API Banku Danych Lokalnych (BDL) GUS oraz pliki lokalne zawierające dane o wynagrodzeniach wg gmin.
-
+Aplikacja webowa stworzona w **Streamlit**, prezentująca dane z rynku pracy w Polsce. Źródłem danych jest API Banku Danych Lokalnych (BDL) GUS oraz pliki lokalne zawierające dane o wynagrodzeniach wg gmin udostępnione przez GUS.
 ## Funkcje
 
 - Wskaźniki rynku pracy:  
