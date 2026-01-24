@@ -21,7 +21,7 @@ def mediana_gminy(gdf, value_column: str):
         line_width_min_pixels=0.4,
     )
   
-       view_state = pdk.ViewState(
+    view_state = pdk.ViewState(
         longitude=19.0,
         latitude=52.0,
         zoom=5.5,
