@@ -112,8 +112,8 @@ def get_wsk_zatrudnienia():                                                     
                #koniec części kodu utworzonego przy użyciu AI"
 
 def show_metric(col, df, label, jednostka="", reverse_colors=False):                            #Definicja funkcji pomocniczej odpowiedzialnej za wyświetlanie najnowszej zmiany wskaźników w aplikacji streamlit
-    val = df["wartość"].iloc[-1]                                                                #Pobiera ostatnią wartość wskaźnika z kolumny „wartość”
-    prev = df["wartość"].iloc[-2]                                                               #Pobiera wartość zmiennej z poprzedniego okresu
+    val = df["wartość"].iloc[-2]                                                                #Pobiera ostatnią wartość wskaźnika z kolumny „wartość”
+    prev = df["wartość"].iloc[-3]                                                               #Pobiera wartość zmiennej z poprzedniego okresu
     delta = round(val - prev, 2)                                                                #Oblicza indeks łańcuchowy i zaokrągla liczbę do dwóch miejsc po przecinku
 
     # Jeśli reverse_colors = True, zmiana dodatnia jest zła (np. bezrobocie)
