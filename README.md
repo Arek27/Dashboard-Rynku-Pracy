@@ -106,7 +106,7 @@ Projekt udostępniony na licencji MIT. Dane pochodzą z publicznych zasobów GUS
   Źródło: GUS BDL – podgrupa:  
   *Mediana wynagrodzeń miesięcznych brutto według badania „Rozkład wynagrodzeń w gospodarce narodowej” (P4610),  
   Przeciętne miesięczne wynagrodzenie brutto według badania „Rozkład wynagrodzeń w gospodarce narodowej” (P4609); czerwiec 2025*
-- Plik `poland.municipalities.json` (granice gmin) link: https://github.com/jusuff/PolandGeoJson
+- Plik `poland.municipalities.json` (granice gmin) [źródło](https://github.com/jusuff/PolandGeoJson)
 
 ---
 
