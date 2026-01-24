@@ -167,7 +167,6 @@ Alternatywnie możesz uruchomić aplikację bez potrzeby pobierania plików czy 
 
 👉 [Kliknij tutaj, aby uruchomić aplikację online](https://dashboard-rynku-pracy-kjx7anadq5smckaza3v5wm.streamlit.app)
 
----
 
 Po chwili aplikacja zostanie otwarta automatycznie w przeglądarce.
 
