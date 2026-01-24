@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-                #Deklaracja kodowania pliku źródłowego. Informuje interpreter Pythona, że plik zapisany jest w kodowaniu UTF-8, co umożliwia poprawne używanie znaków spoza ASCII
 import numpy as np
 import matplotlib.cm as cm
