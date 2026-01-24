@@ -18,6 +18,7 @@ Aplikacja webowa stworzona w **Streamlit**, prezentująca dane z rynku pracy w P
 
 - [BDL API GUS](https://bdl.stat.gov.pl/api/v1/)
 - Plik `Wynagrodzenia.xlsx` (dane o wynagrodzeniach)
+źródło: GUS BDL podgrupa: Mediana wynagrodzeń miesięcznych brutto według badania Rozkład wynagrodzeń w gospodarce narodowej (P4610), Przeciętne miesięczne wynagrodzenie brutto według badania Rozkład wynagrodzeń w gospodarce narodowej (P4609); czerwiec 2025
 - Plik `poland.municipalities.json` (granice gmin)
 
 ## Wymagania
