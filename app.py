@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-                #Deklaracja kodowania pliku źródłowego. Informuje interpreter Pythona, że plik zapisany jest w kodowaniu UTF-8, co umożliwia poprawne używanie znaków spoza ASCII
 import numpy as np
-import matplotlib.cm as cm
+from matplotlib import colormaps
 import matplotlib.colors as colors
 import streamlit as st
 import pandas as pd
@@ -196,7 +196,7 @@ def load_data():                                                                
     vmin = gdf["Mediana"].min()                                                         #wyznaczenie minimalnej a następnie maksymalnej wartości mediany do normalizacji palety kolorów użytej do wykresu mapy
     vmax = gdf["Mediana"].max()
     norm = colors.Normalize(vmin=vmin, vmax=vmax)                                       #Tworzy obiekt normalizujący wartości mediany do zakresu od 0 do 1, co jest wymagane do poprawnego mapowania wartości na kolory.
-    cmap = cm.get_cmap("YlGnBu")                                                        #Pobiera skalę kolorów „YlGnBu”, która będzie używana do wizualnego przedstawienia poziomu mediany wynagrodzeń na mapie.
+    cmap = colormaps["YlGnBu"]                                                        #Pobiera skalę kolorów „YlGnBu”, która będzie używana do wizualnego przedstawienia poziomu mediany wynagrodzeń na mapie.
 
 #część kodu utworzonego przy użyciu AI"
     def colorize(value):                                                                #Definicja funkcji pomocniczej, która zamienia wartość mediany wynagrodzenia na kolor w formacie RGBA.
